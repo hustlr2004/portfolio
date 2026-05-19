@@ -822,9 +822,24 @@
 
       .project-actions {
         display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 18px;
+        margin-top: 12px;
+      }
+
+      .project-repo {
+        width: 100%;
+        min-height: 54px;
+        justify-content: space-between;
+        border-radius: 10px;
+        padding: 0 18px;
+        background:
+          linear-gradient(90deg, rgba(0, 255, 240, 0.075), rgba(255, 45, 120, 0.055)),
+          rgba(0, 0, 0, 0.36);
+      }
+
+      .project-repo::after {
+        content: "↗";
+        color: var(--accent3);
+        font-size: 14px;
       }
 
       .tag,
@@ -2096,8 +2111,11 @@ gourav@portfolio:~$ `;
       }
 
       function renderDiagram(project) {
-        return `<div class="diagram">
-          ${renderProjectImage(project.visual)}
+        return `<div class="project-media">
+          <div class="diagram">
+            ${renderProjectImage(project.visual)}
+          </div>
+          ${project.repo ? `<div class="project-actions"><a class="btn project-repo" href="${project.repo}" target="_blank" rel="noopener noreferrer">GitHub Repo</a></div>` : ""}
         </div>`;
       }
 
@@ -2213,7 +2231,6 @@ gourav@portfolio:~$ `;
                 <p>${project.problem}</p>
                 <ul>${project.highlights.map((item) => `<li>${item}</li>`).join("")}</ul>
                 <div class="tags">${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
-                ${project.repo ? `<div class="project-actions"><a class="btn" href="${project.repo}" target="_blank" rel="noopener noreferrer">GitHub Repo</a></div>` : ""}
               </div>
             </div>
           </article>
