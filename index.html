@@ -9,7 +9,7 @@
     />
     <title>Gourav Singh | Robotics & AI Engineer</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700;800;900&family=Share+Tech+Mono&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Orbitron:wght@700;800;900&family=Share+Tech+Mono&display=swap");
 
       :root {
         --bg: #000000;
@@ -40,8 +40,12 @@
         background: var(--bg);
         color: var(--text);
         cursor: none;
-        font-family: "Share Tech Mono", monospace;
+        font-family: "JetBrains Mono", "Share Tech Mono", monospace;
         overflow-x: hidden;
+      }
+
+      body.nav-open {
+        overflow: hidden;
       }
 
       body.loading {
@@ -189,6 +193,12 @@
         transition: background 240ms ease, border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
       }
 
+      .mobile-nav-toggle,
+      .mobile-brand,
+      .nav-backdrop {
+        display: none;
+      }
+
       .nav::before,
       .nav::after {
         content: "";
@@ -248,7 +258,7 @@
       .brand::after {
         content: "ONLINE";
         color: var(--success);
-        font-family: "Share Tech Mono", monospace;
+        font-family: "JetBrains Mono", "Share Tech Mono", monospace;
         font-size: 9px;
         letter-spacing: 0.16em;
       }
@@ -1844,6 +1854,416 @@
           display: none;
         }
       }
+
+      @media (max-width: 768px) {
+        body {
+          cursor: auto;
+        }
+
+        a,
+        button {
+          cursor: pointer;
+        }
+
+        .mobile-nav-toggle {
+          position: fixed;
+          top: 14px;
+          left: 14px;
+          z-index: 250;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 36px;
+          border: 1px solid var(--accent);
+          border-radius: 4px;
+          background:
+            linear-gradient(180deg, rgba(0, 255, 240, 0.08), transparent),
+            rgba(0, 0, 0, 0.72);
+          color: var(--accent);
+          padding: 6px 10px;
+          font-family: "JetBrains Mono", "Share Tech Mono", monospace;
+          font-size: 18px;
+          line-height: 1;
+          box-shadow: 0 0 18px rgba(0, 255, 240, 0.18);
+        }
+
+        .mobile-brand {
+          position: fixed;
+          top: 15px;
+          left: 62px;
+          z-index: 250;
+          display: inline-flex;
+          align-items: center;
+          min-height: 34px;
+          border-bottom: 0.5px solid rgba(0, 255, 240, 0.45);
+          color: var(--accent);
+          font-family: "Orbitron", sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .nav-backdrop {
+          position: fixed;
+          inset: 0;
+          z-index: 190;
+          display: block;
+          background: rgba(0, 0, 0, 0.68);
+          opacity: 0;
+          pointer-events: none;
+          backdrop-filter: blur(4px);
+          transition: opacity 220ms ease;
+        }
+
+        body.nav-open .nav-backdrop {
+          opacity: 1;
+          pointer-events: auto;
+        }
+
+        .nav {
+          top: 12px;
+          bottom: 12px;
+          left: 12px;
+          right: auto;
+          z-index: 220;
+          width: min(292px, calc(100vw - 44px));
+          min-height: auto;
+          max-height: calc(100dvh - 24px);
+          overflow-y: auto;
+          transform: translateX(calc(-100% - 28px));
+          border-color: rgba(0, 255, 240, 0.48);
+          background:
+            linear-gradient(rgba(0, 255, 240, 0.035) 1px, transparent 1px),
+            rgba(0, 0, 0, 0.92);
+          box-shadow: 0 0 42px rgba(0, 255, 240, 0.16);
+        }
+
+        body.nav-open .nav {
+          transform: translateX(0);
+        }
+
+        .nav::before,
+        .nav::after {
+          display: block;
+        }
+
+        .nav-inner {
+          align-items: stretch;
+          gap: 16px;
+          min-height: calc(100dvh - 24px);
+          padding: 18px;
+        }
+
+        .nav-status,
+        .nav-foot {
+          display: grid;
+        }
+
+        .nav-links {
+          flex-direction: column;
+          flex-wrap: nowrap;
+          gap: 2px;
+        }
+
+        .nav-links a {
+          min-height: 36px;
+          font-size: 11px;
+        }
+
+        .section {
+          width: 100%;
+          margin-left: 0;
+          margin-right: 0;
+          padding: 78px 16px;
+        }
+
+        .hero {
+          min-height: auto;
+          grid-template-columns: 1fr;
+          gap: 28px;
+          padding-top: 108px;
+        }
+
+        h1 {
+          font-size: clamp(48px, 12vw, 80px);
+          line-height: 0.86;
+        }
+
+        h2 {
+          font-size: clamp(28px, 8vw, 48px);
+          line-height: 1;
+        }
+
+        h3 {
+          font-size: 22px;
+        }
+
+        .hero-copy,
+        .hero-sub,
+        .muted,
+        .about-copy {
+          max-width: 100%;
+        }
+
+        .btn-row {
+          display: grid;
+          grid-template-columns: 1fr;
+        }
+
+        .btn-row .btn {
+          width: 100%;
+        }
+
+        .stats {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .stat-pill {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 0;
+          text-align: center;
+        }
+
+        .terminal {
+          width: 100%;
+        }
+
+        .terminal-body {
+          min-height: 300px;
+          padding: 18px;
+          font-size: 11px;
+          overflow-wrap: anywhere;
+        }
+
+        .about-grid,
+        .project-layout {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .avatar-card {
+          width: min(220px, 72vw);
+        }
+
+        .counter-strip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .skill-grid,
+        .secondary-grid,
+        .blog-grid,
+        .cert-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .tech-cloud {
+          max-width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        .skill-marquee {
+          min-width: max-content;
+        }
+
+        .project-card {
+          padding: 16px;
+        }
+
+        .diagram {
+          width: 100%;
+          aspect-ratio: 16 / 10;
+        }
+
+        .project-actions,
+        .project-repo {
+          width: 100%;
+        }
+
+        .tags {
+          gap: 8px;
+        }
+
+        .tag,
+        .chip {
+          max-width: 100%;
+          overflow-wrap: anywhere;
+        }
+
+        .timeline {
+          padding-left: 24px;
+        }
+
+        .timeline::before {
+          left: 5px;
+        }
+
+        .time-item {
+          width: 100%;
+          padding: 14px;
+        }
+
+        .time-item::before {
+          left: -27px;
+        }
+
+        .metric-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .tle-card {
+          grid-column: span 2;
+        }
+
+        .contact-panel {
+          padding: 18px;
+        }
+
+        .contact-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .contact-link {
+          grid-template-columns: 34px 1fr;
+          gap: 10px;
+          min-height: 78px;
+          padding: 12px;
+        }
+
+        .contact-icon {
+          width: 34px;
+          height: 34px;
+          font-size: 13px;
+        }
+
+        .contact-link strong {
+          font-size: 12px;
+        }
+
+        .contact-link span:last-child {
+          font-size: 10px;
+          overflow-wrap: anywhere;
+        }
+
+        .hud {
+          font-size: 8px;
+          letter-spacing: 0.1em;
+        }
+
+        .hud.tl,
+        .hud.bl,
+        .hud.br,
+        .reticle {
+          display: none;
+        }
+
+        .hud.tr {
+          display: block;
+          top: 16px;
+          right: 14px;
+          max-width: 126px;
+        }
+
+        .hud::before,
+        .hud::after {
+          width: 28px;
+          margin: 4px 0;
+        }
+
+        .soundtrack {
+          right: 14px;
+          bottom: 14px;
+          max-width: 200px;
+          gap: 10px;
+          border-radius: 12px;
+          padding: 10px 12px;
+          font-size: 10px;
+        }
+
+        .soundtrack::before {
+          width: 34px;
+          height: 34px;
+          font-size: 14px;
+        }
+
+        .soundtrack-meta span {
+          display: none;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .section {
+          padding: 70px 14px;
+        }
+
+        .hero {
+          padding-top: 96px;
+        }
+
+        .eyebrow,
+        .section-label,
+        .kicker {
+          font-size: 10px;
+          letter-spacing: 0.12em;
+        }
+
+        .counter-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .project-card,
+        .card,
+        .mini-card {
+          border-radius: 12px;
+        }
+
+        .repo-command {
+          font-size: 11px;
+          letter-spacing: 0.08em;
+        }
+
+        .repo-path {
+          font-size: 9px;
+        }
+
+        .soundtrack {
+          max-width: 176px;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 380px) {
+        .section {
+          padding-left: 12px;
+          padding-right: 12px;
+        }
+
+        h1 {
+          font-size: clamp(44px, 14vw, 64px);
+        }
+
+        .mobile-brand {
+          display: none;
+        }
+
+        .hud.tr {
+          max-width: 110px;
+        }
+
+        .terminal-body {
+          font-size: 10px;
+        }
+      }
     </style>
   </head>
   <body class="loading">
@@ -1854,6 +2274,9 @@
     <div class="hud tr">TARGET: INTERNSHIP<br />SIGNAL: STABLE</div>
     <div class="hud bl">LAT 12.9716<br />LON 77.5946</div>
     <div class="hud br">SCAN READY<br />BUILD: 2025.08</div>
+    <button class="mobile-nav-toggle" id="mobile-nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <a href="#home" class="mobile-brand" aria-label="Go to home">GS.DEV</a>
+    <div class="nav-backdrop" id="nav-backdrop" aria-hidden="true"></div>
 
     <div class="loader" id="loader" aria-label="Loading portfolio">
       <div class="boot">
@@ -2552,13 +2975,28 @@ gourav@portfolio:~$ `;
         reticle.classList.toggle("hot", Boolean(event.target.closest("a, button, .project-card, .card, .mini-card")));
       });
 
-      document.querySelectorAll(".nav-links a, .brand").forEach((link) => {
+      const mobileNavToggle = document.getElementById("mobile-nav-toggle");
+      const navBackdrop = document.getElementById("nav-backdrop");
+      const setMobileNav = (isOpen) => {
+        document.body.classList.toggle("nav-open", isOpen);
+        mobileNavToggle.setAttribute("aria-expanded", String(isOpen));
+        mobileNavToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+      };
+
+      mobileNavToggle.addEventListener("click", () => {
+        setMobileNav(!document.body.classList.contains("nav-open"));
+      });
+
+      navBackdrop.addEventListener("click", () => setMobileNav(false));
+
+      document.querySelectorAll(".nav-links a, .brand, .mobile-brand").forEach((link) => {
         link.addEventListener("click", (event) => {
           const href = link.getAttribute("href");
           if (!href || !href.startsWith("#")) return;
           const target = document.querySelector(href);
           if (!target) return;
           event.preventDefault();
+          setMobileNav(false);
           audioUnlocked = true;
           playSoundtrackFromInteraction();
           flashGlitch();
