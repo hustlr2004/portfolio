@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  background: #04060f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: #04060f;
+  color: #f8fafc;
+  font-family: var(--font-jetbrains-mono), monospace;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: #ffffff;
+}
+
+.grid-texture {
+  background-image:
+    linear-gradient(rgba(79, 142, 247, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 142, 247, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
