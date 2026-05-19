@@ -2454,12 +2454,12 @@
         <h2 class="reveal">Thinking out loud</h2>
         <p class="muted reveal">Technical writing on systems, AI, and engineering — coming soon.</p>
         <div class="blog-grid reveal">
-          <div class="mini-card"><span class="badge">AI · Drug Discovery</span><h3>How I Built an AI That Designs Drug Molecules</h3><p>10 min · Coming soon</p></div>
-          <div class="mini-card"><span class="badge">Chaos Engineering</span><h3>Breaking Your Own Infrastructure on Purpose</h3><p>7 min · Coming soon</p></div>
-          <div class="mini-card"><span class="badge">Platform Engineering</span><h3>Why Self-Healing Systems Are the Future of DevOps</h3><p>6 min · Coming soon</p></div>
-          <div class="mini-card"><span class="badge">DevOps</span><h3>Docker + Prometheus: Monitoring That Actually Alerts</h3><p>8 min · Coming soon</p></div>
-          <div class="mini-card"><span class="badge">Voice Systems</span><h3>Designing Multilingual Call Flows Without LLM Chaos</h3><p>9 min · Coming soon</p></div>
-          <div class="mini-card"><span class="badge">Applied CNNs</span><h3>Medical Vision Pipelines for Biometric Classification</h3><p>8 min · Coming soon</p></div>
+          <div class="mini-card"><span class="badge">AI · Drug Discovery</span><h3>How I Built an AI That Designs Drug Molecules</h3><p>Coming soon</p></div>
+          <div class="mini-card"><span class="badge">Chaos Engineering</span><h3>Breaking Your Own Infrastructure on Purpose</h3><p>Coming soon</p></div>
+          <div class="mini-card"><span class="badge">Platform Engineering</span><h3>Why Self-Healing Systems Are the Future of DevOps</h3><p>Coming soon</p></div>
+          <div class="mini-card"><span class="badge">DevOps</span><h3>Docker + Prometheus: Monitoring That Actually Alerts</h3><p>Coming soon</p></div>
+          <div class="mini-card"><span class="badge">Voice Systems</span><h3>Designing Multilingual Call Flows Without LLM Chaos</h3><p>Coming soon</p></div>
+          <div class="mini-card"><span class="badge">Applied CNNs</span><h3>Medical Vision Pipelines for Biometric Classification</h3><p>Coming soon</p></div>
         </div>
       </section>
 
@@ -2478,9 +2478,9 @@
               <span class="contact-icon">GH</span>
               <span><strong>GitHub</strong><span>github.com/hustlr2004</span></span>
             </a>
-            <a class="contact-link" href="https://linkedin.com/in/gouravsingh">
+            <a class="contact-link" href="https://www.linkedin.com/in/gourav-singh-rawat-builds/">
               <span class="contact-icon">in</span>
-              <span><strong>LinkedIn</strong><span>linkedin.com/in/gouravsingh</span></span>
+              <span><strong>LinkedIn</strong><span>linkedin.com/in/gourav-singh-rawat-builds</span></span>
             </a>
             <a class="contact-link" href="mailto:singhgopal08579@gmail.com">
               <span class="contact-icon">@</span>
@@ -2932,32 +2932,16 @@ gourav@portfolio:~$ `;
 
         if (current && current.id !== activeSectionId) {
           activeSectionId = current.id;
-          playSoundtrackFromInteraction();
         }
       }
 
       let activeSectionId = "";
-      let audioUnlocked = false;
       let audioStarted = false;
 
       function setSoundtrackState(isPlaying) {
         const button = document.getElementById("soundtrack-toggle");
         button.classList.toggle("playing", isPlaying);
         button.setAttribute("aria-label", isPlaying ? "Pause Derezzed soundtrack" : "Play Derezzed soundtrack");
-      }
-
-      function playSoundtrackFromInteraction() {
-        if (!audioUnlocked || audioStarted) return;
-        const audio = document.getElementById("soundtrack-audio");
-        audio.volume = 0.46;
-        audio.play()
-          .then(() => {
-            audioStarted = true;
-            setSoundtrackState(true);
-          })
-          .catch(() => {
-            audioUnlocked = false;
-          });
       }
 
       window.addEventListener("scroll", () => {
@@ -2997,18 +2981,10 @@ gourav@portfolio:~$ `;
           if (!target) return;
           event.preventDefault();
           setMobileNav(false);
-          audioUnlocked = true;
-          playSoundtrackFromInteraction();
           flashGlitch();
           window.setTimeout(() => target.scrollIntoView({ behavior: "smooth" }), 180);
         });
       });
-
-      document.addEventListener("click", (event) => {
-        if (event.target.closest("#soundtrack-toggle")) return;
-        audioUnlocked = true;
-        playSoundtrackFromInteraction();
-      }, { once: true });
 
       function checkRoute() {
         const valid = ["", "#home", "#about", "#skills", "#projects", "#timeline", "#dsa", "#writing", "#contact"];
@@ -3070,12 +3046,11 @@ gourav@portfolio:~$ `;
       function toggleSoundtrack() {
         const audio = document.getElementById("soundtrack-audio");
         if (audio.paused) {
-          audioUnlocked = true;
           audio.volume = 0.46;
           audio.play().then(() => {
             audioStarted = true;
             setSoundtrackState(true);
-          });
+          }).catch(() => setSoundtrackState(false));
         } else {
           audio.pause();
           audioStarted = false;
