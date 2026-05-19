@@ -820,6 +820,13 @@
         margin-top: 24px;
       }
 
+      .project-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
       .tag,
       .chip {
         border: 0.5px solid var(--border);
@@ -1921,6 +1928,7 @@ gourav@portfolio:~$ `;
           tagline: "When AI meets molecular biology, drug discovery changes forever.",
           problem: "Drug discovery takes 10–15 years and costs billions. MolGenix compresses months of wet-lab hypothesis testing into a computational pipeline that runs in minutes.",
           visual: "molecule",
+          repo: "https://github.com/hustlr2004/Molgenix.git",
           nodes: [
             ["React UI", "blue", 5, 14], ["FastAPI Gateway", "grey", 32, 14], ["NLP Pipeline", "purple", 63, 14],
             ["Mol Generator", "purple", 18, 45], ["RDKit Validator", "success", 50, 45], ["DeepChem ADMET", "success", 18, 70],
@@ -1942,6 +1950,7 @@ gourav@portfolio:~$ `;
           tagline: "What doesn't kill your infrastructure makes it stronger. So we kill it on purpose.",
           problem: "Most systems only fail in production. ChaosLab lets you fail safely — injecting faults under load, then watching the system heal itself.",
           visual: "chaos",
+          repo: "https://github.com/hustlr2004/chaos-engg-platform.git",
           nodes: [
             ["k6 Load Gen", "blue", 6, 14], ["Target App", "grey", 35, 14], ["Toxiproxy", "purple", 66, 14],
             ["Prometheus", "success", 18, 45], ["cAdvisor", "success", 46, 45], ["BullMQ Plane", "purple", 32, 68],
@@ -1963,6 +1972,7 @@ gourav@portfolio:~$ `;
           tagline: "A developer-first commerce system with clean product flow and backend control.",
           problem: "TechCart is an e-commerce platform for browsing products, managing carts, handling orders, and keeping the shopping workflow fast, structured, and scalable.",
           visual: "commerce",
+          repo: "https://github.com/hustlr2004/techcart-ecommerce.git",
           nodes: [
             ["Product UI", "blue", 6, 14], ["Cart State", "purple", 34, 14], ["Checkout", "success", 64, 14],
             ["Auth", "grey", 12, 45], ["Orders API", "grey", 42, 45], ["Database", "success", 70, 45],
@@ -1985,6 +1995,7 @@ gourav@portfolio:~$ `;
           tagline: "AI-powered elder care, built to actually scale.",
           problem: "A backend-first elder care system with AI chat, image analysis, health report export, and real-time call signaling for remote family support.",
           visual: "care",
+          repo: "https://github.com/hustlr2004/Eldimind-App.git",
           nodes: [
             ["React Client", "blue", 6, 14], ["Express API", "grey", 34, 14], ["Gemini API", "purple", 64, 14],
             ["Image Analysis", "purple", 12, 45], ["FastAPI ML", "grey", 42, 45], ["PDF Export", "success", 70, 45],
@@ -2004,6 +2015,7 @@ gourav@portfolio:~$ `;
           tagline: "Your fingerprint knows your blood type. Deep learning proved it.",
           problem: "CNN-based image classifier trained to predict blood group classes from fingerprint images with a production-style training pipeline.",
           visual: "fingerprint",
+          repo: "https://github.com/hustlr2004/blood-detection-using-ml.git",
           nodes: [
             ["Fingerprint Set", "blue", 6, 14], ["Preprocess", "grey", 34, 14], ["CNN Stack", "purple", 64, 14],
             ["Conv + ReLU", "purple", 12, 45], ["MaxPool", "purple", 38, 45], ["Dropout 0.5", "grey", 64, 45],
@@ -2023,6 +2035,7 @@ gourav@portfolio:~$ `;
           tagline: "Teaching machines to smell misinformation.",
           problem: "Interactive Streamlit app that transforms news text into TF-IDF features and classifies misinformation with a Logistic Regression model.",
           visual: "news",
+          repo: "https://github.com/hustlr2004/fake-news-detection.git",
           nodes: [
             ["News Input", "blue", 6, 14], ["Clean Text", "grey", 34, 14], ["TF-IDF", "purple", 64, 14],
             ["Vector Space", "purple", 16, 45], ["LogReg Model", "grey", 46, 45], ["Prediction", "success", 70, 45],
@@ -2042,6 +2055,7 @@ gourav@portfolio:~$ `;
           tagline: "A phone call. Four languages. Zero human operators.",
           problem: "A multilingual call-flow system for English, Hindi, Kannada, and Marathi with deterministic conversation logic, persistent order state, and clean telephony handoff.",
           visual: "voice",
+          repo: "https://github.com/hustlr2004/voicebot.git",
           nodes: [
             ["Incoming Call", "blue", 6, 14], ["Twilio", "blue", 34, 14], ["FastAPI Webhook", "grey", 62, 14],
             ["Language Detector", "purple", 14, 45], ["State Machine", "purple", 48, 45], ["SQLite", "grey", 72, 45],
@@ -2199,6 +2213,7 @@ gourav@portfolio:~$ `;
                 <p>${project.problem}</p>
                 <ul>${project.highlights.map((item) => `<li>${item}</li>`).join("")}</ul>
                 <div class="tags">${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}</div>
+                ${project.repo ? `<div class="project-actions"><a class="btn" href="${project.repo}" target="_blank" rel="noopener noreferrer">GitHub Repo</a></div>` : ""}
               </div>
             </div>
           </article>
